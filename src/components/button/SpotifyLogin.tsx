@@ -1,5 +1,3 @@
-import { AUTH_URL } from "@/config/endpoints";
-import { createQueryString } from "@/lib/QueryString";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 

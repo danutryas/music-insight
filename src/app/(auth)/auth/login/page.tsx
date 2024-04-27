@@ -1,5 +1,5 @@
 "use client";
-import SpotifyLoginButton from "@/component/button/SpotifyLogin";
+import SpotifyLoginButton from "@/components/button/SpotifyLogin";
 
 const LoginPage = () => {
   return (
