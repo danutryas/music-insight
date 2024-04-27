@@ -12,7 +12,6 @@ export default async function handler(req: NextRequest, res: NextApiResponse) {
   if (!cookie) {
     return NextResponse.redirect(new URL("/auth/login", req.url));
   } else {
-    console.log("a");
     if (req.nextUrl.pathname.match("/auth/login")) {
       return NextResponse.redirect(new URL("/", req.url));
     }
