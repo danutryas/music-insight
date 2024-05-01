@@ -6,12 +6,27 @@ declare module "next-auth" {
    */
   interface Session {
     user: {
-      address: string;
-      accessToken: string;
+      name: string;
+      email: string;
+      picture: string;
+      sub: string;
     } & DefaultSession["user"];
+    error?: "RefreshAccessTokenError";
+    access_token: string;
+    refresh_token: string;
+    expires: string;
+    expires_at: number;
   }
 }
 
+declare module "next-auth/jwt" {
+  interface JWT {
+    access_token: string;
+    expires_at: number;
+    refresh_token: string;
+    error?: "RefreshAccessTokenError";
+  }
+}
 export interface SpotifyImage {
   url: string;
 }

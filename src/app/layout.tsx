@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AuthWrapper from "@/context/AuthWrapper";
+import Header from "@/components/header/Header";
+import { Container } from "@/components/layouts/Container";
+import { isAuth } from "@/lib/isAuth";
+import RefreshTokenProvider from "@/context/RefreshTokenProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthWrapper>
-        <body className={inter.className}>{children}</body>
+        <RefreshTokenProvider>
+          <body className={inter.className}>
+            <Container>
+              <Header isAuth={isAuth()} />
+              {children}
+            </Container>
+          </body>
+        </RefreshTokenProvider>
       </AuthWrapper>
     </html>
   );
