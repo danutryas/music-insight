@@ -1,10 +1,8 @@
-import Header from "@/components/header/Header";
-import Image from "next/image";
+"use client";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-  return (
-    <div className="container mx-auto w-full">
-      <Header />
-    </div>
-  );
+  const { data: session } = useSession();
+  console.log(session);
+  return <div className="container mx-auto w-full"></div>;
 }
