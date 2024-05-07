@@ -43,7 +43,7 @@ const ContextSection: React.FC<ContextSection> = (props) => {
         ];
         if (keys.includes(key)) return;
         return (
-          <li className="flex">
+          <li className="flex" key={key}>
             <p>{key}: </p>
             {(typeof value === "string" || typeof value === "number") && (
               <p>{value}</p>
@@ -64,8 +64,9 @@ const ContextSection: React.FC<ContextSection> = (props) => {
           {/* <ul>{renderData()}</ul> */}
           <ul>
             {data &&
+              data.items &&
               data.items.map((e: any, index: number) => (
-                <p>{index + 1 + " : " + e.track.name}</p>
+                <p key={index}>{index + 1 + " : " + e.track.name}</p>
               ))}
           </ul>
         </div>

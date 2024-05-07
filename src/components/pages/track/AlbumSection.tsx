@@ -19,7 +19,7 @@ const AlbumSection: React.FC<AlbumSection> = (props) => {
         ];
         if (keys.includes(key)) return;
         return (
-          <li className="flex">
+          <li className="flex" key={key}>
             <p>{key}: </p>
             {(typeof value === "string" || typeof value === "number") && (
               <p>{value}</p>

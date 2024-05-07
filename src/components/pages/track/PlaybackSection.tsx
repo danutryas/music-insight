@@ -32,7 +32,7 @@ const PlaybackSection: React.FC<PlaybackSection> = (props) => {
         // ];
         // if (keys.includes(key)) return;
         return (
-          <li className="flex">
+          <li className="flex" key={key}>
             <p>{key}: </p>
             {typeof value === "string" ||
             typeof value === "number" ||
