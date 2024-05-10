@@ -6,21 +6,23 @@ import PlaybackPlayer from "./PlaybackPlayer";
 import usePlayback from "@/context/PlaybackContext";
 
 const Playback: React.FC = () => {
-  const { playback, isPlaybackLoading } = usePlayback();
-
-  return (
-    <BlurryCard className="mb-5 fixed bottom-0 h-auto">
-      {!isPlaybackLoading && playback ? (
-        <div className="flex justify-between py-2 items-center px-3 text-white h-full ">
-          <PlaybackInformation info={playback.item} />
-          <PlaybackPlayer />
-          <PlaybackController />
-        </div>
-      ) : (
-        <div className="">Loading...</div>
-      )}
-    </BlurryCard>
-  );
+  const { playback, isPlaybackLoading, isEmpty } = usePlayback();
+  console.log(playback);
+  if (!isEmpty)
+    return (
+      <BlurryCard className="mb-5 fixed bottom-0 h-auto">
+        {!isPlaybackLoading && playback ? (
+          <div className="flex justify-between items-center  text-white h-full ">
+            <PlaybackInformation info={playback.item} />
+            <PlaybackPlayer />
+            <PlaybackController />
+          </div>
+        ) : (
+          <div className="">Loading...</div>
+        )}
+      </BlurryCard>
+    );
+  return null;
 };
 
 export default Playback;

@@ -7,7 +7,7 @@ export const getCurrentTrack = async () => {
 
 export const getPlaybackState = async () => {
   const response = await AxiosSpotify.get("/me/player");
-  return response.data;
+  return response;
 };
 
 export const skipToNext = async () => {

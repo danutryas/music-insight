@@ -1,5 +1,6 @@
 "use client";
 
+import BlurryCard from "@/components/cards/BlurryCard";
 import AlbumSection from "@/components/pages/track/AlbumSection";
 import PlaybackSection from "@/components/pages/track/PlaybackSection";
 import ContextSection from "@/components/pages/track/TrackContext";
@@ -32,7 +33,7 @@ const TrackPage = () => {
     return (
       <>
         <div className="flex gap-5 mt-10">
-          <div className="basis-3/5 border-white border-2 rounded-2xl min-h-44 h-full py-3 px-4">
+          <BlurryCard>
             {currentTrack ? (
               <>
                 <p>name : {currentTrack.item.name}</p>
@@ -43,7 +44,7 @@ const TrackPage = () => {
                 </div>
               </>
             ) : null}
-          </div>
+          </BlurryCard>
           <div className="basis-2/5">
             <AlbumSection album={currentTrack.item.album} />
           </div>
@@ -54,9 +55,6 @@ const TrackPage = () => {
               <ContextSection context={currentTrack.context} />
             </div>
           )}
-          <div className="basis-2/5">
-            <PlaybackSection />
-          </div>
         </div>
       </>
     );

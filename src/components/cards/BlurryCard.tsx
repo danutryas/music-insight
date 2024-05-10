@@ -10,7 +10,7 @@ const BlurryCard: React.FC<PropsWithChildren<BlurryCard>> = (props) => {
   return (
     <div
       className={twMerge(
-        "container w-full h-full rounded-lg  bg-bgContent border-bgColor border-[3px] blur-outline",
+        "container w-full h-full rounded-lg  bg-bgContent border-bgColor border-[3px] blur-outline px-3 py-2",
         className
       )}
     >

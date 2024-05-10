@@ -17,7 +17,7 @@ const Header: React.FC<Header> = ({ isAuth }) => {
   return (
     <div className="pt-5">
       <BlurryCard>
-        <div className="flex justify-between items-center p-3 text-textColor">
+        <div className="flex justify-between items-center text-textColor">
           <Navbar />
           <NavHome />
           <User isAuth={isAuth} />
