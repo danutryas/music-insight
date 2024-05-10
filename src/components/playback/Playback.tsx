@@ -1,4 +1,5 @@
 "use client";
+import BlurryCard from "../cards/BlurryCard";
 import PlaybackController from "./PlaybackController";
 import PlaybackInformation from "./PlaybackInformation";
 import PlaybackPlayer from "./PlaybackPlayer";
@@ -8,7 +9,7 @@ const Playback: React.FC = () => {
   const { playback, isPlaybackLoading } = usePlayback();
 
   return (
-    <div className="container w-full h-20 rounded-xl mb-5 absolute bottom-0 bg-[#232B35] shadow-sm border-white border">
+    <BlurryCard className="mb-5 absolute bottom-0 h-auto">
       {!isPlaybackLoading && playback ? (
         <div className="flex justify-between py-2 items-center px-3 text-white h-full ">
           <PlaybackInformation info={playback.item} />
@@ -18,7 +19,7 @@ const Playback: React.FC = () => {
       ) : (
         <div className="">Loading...</div>
       )}
-    </div>
+    </BlurryCard>
   );
 };
 

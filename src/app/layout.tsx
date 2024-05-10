@@ -27,7 +27,11 @@ export default function RootLayout({
       <AuthWrapper>
         <RefreshTokenProvider>
           <ContextWrapper>
-            <body className={inter.className}>
+            <body
+              className={
+                inter.className + " bg-bgColor h-auto min-h-screen mt-0"
+              }
+            >
               <Container>
                 <Header isAuth={isAuth()} />
                 {children}

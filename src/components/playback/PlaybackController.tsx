@@ -26,6 +26,12 @@ const PlaybackController = () => {
     if (!isMute) return volume;
     return 0;
   };
+
+  const muteHandler = () => {
+    updatePlaybackVolume(isMute ? volume : 0);
+    setIsMute((prev) => !prev);
+  };
+
   useEffect(() => {
     if (playback) setVolume(playback.device.volume_percent);
   }, [playback]);
@@ -34,7 +40,7 @@ const PlaybackController = () => {
     <div className="w-3/12 flex justify-end gap-2">
       <button
         className=""
-        onClick={() => setIsMute((prev) => !prev)}
+        onClick={muteHandler}
         disabled={!playback?.device.supports_volume}
       >
         {renderVolumeIcon()}
@@ -45,9 +51,12 @@ const PlaybackController = () => {
         id="volume"
         disabled={!playback?.device.supports_volume}
         value={volumeHandler()}
-        onFocusCapture={(e) => {
-          setVolume(Number(e.target.value));
+        onBlurCapture={(e) => {
           updatePlaybackVolume(Number(e.target.value));
+          console.log(e.target.value);
+        }}
+        onChange={(e) => {
+          setVolume(Number(e.target.value));
         }}
       />
     </div>

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { WhiteLogo } from "../icons/Logo";
 import { signOut } from "next-auth/react";
+import BlurryCard from "../cards/BlurryCard";
 
 interface Header {
   isAuth: boolean;
@@ -14,12 +15,14 @@ interface Header {
 
 const Header: React.FC<Header> = ({ isAuth }) => {
   return (
-    <div className="w-full h-full rounded-xl border-2 border-white mt-5">
-      <div className="flex justify-between py-2 items-center px-3 text-white">
-        <Navbar />
-        <NavHome />
-        <User isAuth={isAuth} />
-      </div>
+    <div className="pt-5">
+      <BlurryCard>
+        <div className="flex justify-between items-center p-3 text-textColor">
+          <Navbar />
+          <NavHome />
+          <User isAuth={isAuth} />
+        </div>
+      </BlurryCard>
     </div>
   );
 };
@@ -33,7 +36,7 @@ const Navbar = () => {
     <ul className="flex gap-4 basis-2/5">
       <li
         className={`border-b-2 py-1 min-w-14 flex justify-center ${
-          pathname.startsWith("/track") ? "border-white" : "border-transparent"
+          pathname.startsWith("/track") ? "border-border" : "border-transparent"
         }`}
       >
         <Link href="/track">TRACK</Link>
@@ -62,12 +65,13 @@ const NavHome = () => {
 const User = ({ isAuth }: { isAuth: boolean }) => {
   const session = getSession();
   return (
-    <div className="flex justify-end basis-2/5 w-10 h-10 items-center gap-4">
+    <div className="flex justify-end basis-2/5 w-10 h-10 items-center gap-4  ">
       {isAuth ? (
         <>
           <h2 onClick={() => signOut()}>{session?.user.name}</h2>
           <Image
             alt="user-profile"
+            className="border-border border"
             src={session?.user.picture}
             width={40}
             height={40}

@@ -1,12 +1,13 @@
 import { Artist, Item } from "@/types/playback";
-import Image from "next/image";
-
+import { Image } from "antd";
+// import Image from "next/image";
+import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
 const PlaybackInformation = ({ info }: { info: Item }) => {
   const { name, album, id, artists } = info;
 
   const getArtists = () => {
     if (artists.length === 1) {
-      return <span>{artists[0].name}</span>;
+      return <ArtistName artist={artists[0]} />;
     } else if (artists.length > 1) {
       return artists.map((artist, index) => (
         <>
@@ -21,21 +22,29 @@ const PlaybackInformation = ({ info }: { info: Item }) => {
 
   return (
     <div className="flex gap-4 items-center w-3/12">
-      <div className="border w-16 border-white rounded-lg">
+      <div className=" rounded-lg flex justify-center items-centers w-16 h-16 ">
         <Image
+          // <Image
           width={64}
           height={64}
           src={album.images[0].url}
-          alt={id}
+          preview={{ mask: <ZoomOutMapIcon style={{ fontSize: 18 }} /> }}
+          // alt={id}
+          placeholder={false}
           style={{
             objectFit: "cover",
             borderRadius: "8px",
           }}
         />
       </div>
-      <div className="flex flex-col gap-1 w-[calc(100%-64px)]">
-        <h3 className="truncate whitespace-nowrap text-ellipsis max-w-full hover:text-ellipsis">
-          {name}
+      <div className="flex flex-col w-[calc(100%-64px)]  ">
+        <h3 className="truncate whitespace-nowrap text-ellipsis max-w-full hover:text-ellipsis cursor-pointer">
+          <a
+            href=""
+            className="hover:text-textHover text-textColor cursor-pointer"
+          >
+            {name}
+          </a>
         </h3>
         <div className="truncate whitespace-nowrap text-ellipsis max-w-full hover:text-ellipsis">
           {getArtists()}
@@ -48,7 +57,10 @@ export default PlaybackInformation;
 
 const ArtistName = ({ artist }: { artist: Artist }) => {
   return (
-    <a href="" className="text-gray-500">
+    <a
+      href=""
+      className="hover:text-textHover text-textColor text-xs cursor-pointer"
+    >
       {artist.name}
     </a>
   );
