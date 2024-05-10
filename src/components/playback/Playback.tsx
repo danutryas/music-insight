@@ -9,7 +9,7 @@ const Playback: React.FC = () => {
   const { playback, isPlaybackLoading } = usePlayback();
 
   return (
-    <BlurryCard className="mb-5 absolute bottom-0 h-auto">
+    <BlurryCard className="mb-5 fixed bottom-0 h-auto">
       {!isPlaybackLoading && playback ? (
         <div className="flex justify-between py-2 items-center px-3 text-white h-full ">
           <PlaybackInformation info={playback.item} />
