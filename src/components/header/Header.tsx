@@ -31,25 +31,29 @@ export default Header;
 
 const Navbar = () => {
   const pathname = usePathname();
-
+  const pages = [
+    {
+      name: "TRACK",
+      path: "/track",
+    },
+    {
+      name: "ARTIST",
+      path: "/artist",
+    },
+  ];
   return (
     <ul className="flex gap-4 basis-2/5">
-      <li
-        className={`border-b-2 py-1 min-w-14 flex justify-center ${
-          pathname.startsWith("/track") ? "border-border" : "border-transparent"
-        }`}
-      >
-        <Link href="/track">TRACK</Link>
-      </li>
-      <li
-        className={`border-b-2  py-1 min-w-14 flex justify-center ${
-          pathname.startsWith("/profile")
-            ? "border-white"
-            : "border-transparent"
-        }`}
-      >
-        <Link href="/profile">PROFILE</Link>
-      </li>
+      {pages.map((page) => (
+        <li
+          className={`border-b-2 py-1 min-w-14 flex justify-center ${
+            pathname.startsWith(page.path)
+              ? "border-border"
+              : "border-transparent"
+          }`}
+        >
+          <Link href={page.path}>{page.name}</Link>
+        </li>
+      ))}
     </ul>
   );
 };
