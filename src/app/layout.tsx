@@ -6,6 +6,9 @@ import Header from "@/components/header/Header";
 import { Container } from "@/components/layouts/Container";
 import { isAuth } from "@/lib/isAuth";
 import RefreshTokenProvider from "@/context/RefreshTokenProvider";
+import Playback from "@/components/playback/Playback";
+import { PlaybackProvider } from "@/context/PlaybackContext";
+import ContextWrapper from "@/context/ContextWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,12 +26,19 @@ export default function RootLayout({
     <html lang="en">
       <AuthWrapper>
         <RefreshTokenProvider>
-          <body className={inter.className}>
-            <Container>
-              <Header isAuth={isAuth()} />
-              {children}
-            </Container>
-          </body>
+          <ContextWrapper>
+            <body
+              className={
+                inter.className + " bg-bgColor h-auto min-h-screen mt-0"
+              }
+            >
+              <Container>
+                <Header isAuth={isAuth()} />
+                {children}
+                <Playback />
+              </Container>
+            </body>
+          </ContextWrapper>
         </RefreshTokenProvider>
       </AuthWrapper>
     </html>

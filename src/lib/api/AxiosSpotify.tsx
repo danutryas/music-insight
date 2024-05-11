@@ -3,7 +3,7 @@ import { getSession } from "next-auth/react";
 
 const AxiosSpotify = () => {
   const instance = axios.create({
-    baseURL: "https://api.spotify.com/v1",
+    baseURL: process.env.NEXT_PUBLIC_SPOTIFY_BASE_URL,
   });
   instance.interceptors.request.use(async (request: any) => {
     const session = await getSession();

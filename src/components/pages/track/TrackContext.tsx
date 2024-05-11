@@ -1,3 +1,4 @@
+import BlurryCard from "@/components/cards/BlurryCard";
 import { Context } from "@/types/track";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -43,7 +44,7 @@ const ContextSection: React.FC<ContextSection> = (props) => {
         ];
         if (keys.includes(key)) return;
         return (
-          <li className="flex">
+          <li className="flex" key={key}>
             <p>{key}: </p>
             {(typeof value === "string" || typeof value === "number") && (
               <p>{value}</p>
@@ -53,9 +54,8 @@ const ContextSection: React.FC<ContextSection> = (props) => {
       });
     }
   };
-  // console.log(data);
   return (
-    <div className="border-white border-2 rounded-2xl min-h-44 h-full py-3 px-4">
+    <BlurryCard>
       <div className="flex flex-col justify-between min-h-44 h-full">
         <div className="">
           <h4 className="text-center capitalize">
@@ -64,8 +64,9 @@ const ContextSection: React.FC<ContextSection> = (props) => {
           {/* <ul>{renderData()}</ul> */}
           <ul>
             {data &&
+              data.items &&
               data.items.map((e: any, index: number) => (
-                <p>{index + 1 + " : " + e.track.name}</p>
+                <p key={index}>{index + 1 + " : " + e.track.name}</p>
               ))}
           </ul>
         </div>
@@ -80,7 +81,7 @@ const ContextSection: React.FC<ContextSection> = (props) => {
           <p>{"Call api Called: " + context.href}</p>
         </div>
       </div>
-    </div>
+    </BlurryCard>
   );
 };
 

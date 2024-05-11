@@ -1,3 +1,4 @@
+import BlurryCard from "@/components/cards/BlurryCard";
 import { Album } from "@/types/track";
 
 interface AlbumSection {
@@ -19,7 +20,7 @@ const AlbumSection: React.FC<AlbumSection> = (props) => {
         ];
         if (keys.includes(key)) return;
         return (
-          <li className="flex">
+          <li className="flex" key={key}>
             <p>{key}: </p>
             {(typeof value === "string" || typeof value === "number") && (
               <p>{value}</p>
@@ -31,10 +32,10 @@ const AlbumSection: React.FC<AlbumSection> = (props) => {
   };
   if (album?.album_type === "album")
     return (
-      <div className="border-white border-2 rounded-2xl min-h-44 h-full py-3 px-4">
+      <BlurryCard>
         <h4 className="text-center">ALBUM</h4>
         <ul>{renderData()}</ul>
-      </div>
+      </BlurryCard>
     );
 
   //   return <ul>{renderData()}</ul>;
