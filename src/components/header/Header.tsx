@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import SpotifyLoginButton from "../button/SpotifyLogin";
-import getSession from "@/lib/Session";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { WhiteLogo } from "../icons/Logo";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import BlurryCard from "../cards/BlurryCard";
 
 interface Header {
@@ -43,13 +42,14 @@ const Navbar = () => {
   ];
   return (
     <ul className="flex gap-4 basis-2/5">
-      {pages.map((page) => (
+      {pages.map((page, index) => (
         <li
           className={`border-b-2 py-1 min-w-14 flex justify-center ${
             pathname.startsWith(page.path)
               ? "border-border"
               : "border-transparent"
           }`}
+          key={index}
         >
           <Link href={page.path}>{page.name}</Link>
         </li>
@@ -67,7 +67,7 @@ const NavHome = () => {
   );
 };
 const User = ({ isAuth }: { isAuth: boolean }) => {
-  const session = getSession();
+  const { data: session } = useSession();
   return (
     <div className="flex justify-end basis-2/5 w-10 h-10 items-center gap-4  ">
       {isAuth ? (

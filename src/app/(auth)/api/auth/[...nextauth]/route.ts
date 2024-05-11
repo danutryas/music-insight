@@ -28,7 +28,7 @@ const handler = NextAuth({
   ],
 
   callbacks: {
-    async jwt({ token, account }: Params) {
+    async jwt({ token, account }: any) {
       if (account) {
         // Save the access token and refresh token in the JWT on the initial login, as well as the user details
         return {

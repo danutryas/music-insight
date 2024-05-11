@@ -26,7 +26,7 @@ const TrackPage = () => {
   if (isLoading) return <div className="">Loading...</div>;
 
   if (typeof currentTrack === "string")
-    return <div className="">Your Spotify doesn't play anything</div>;
+    return <div className="">Your Spotify doesn&apos;t play anything</div>;
 
   if (currentTrack)
     return (
