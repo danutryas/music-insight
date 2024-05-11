@@ -8,9 +8,8 @@ const PlaybackSection: React.FC<PlaybackSection> = (props) => {
   const [playback, setPlayback] = useState<Playback | null>(null);
 
   useEffect(() => {
-    getPlaybackState().then((e) => {
-      setPlayback(e);
-      console.log(e);
+    getPlaybackState().then((response) => {
+      setPlayback(response.data);
     });
   }, []);
   const renderData = () => {

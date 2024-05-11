@@ -20,7 +20,6 @@ const ContextSection: React.FC<ContextSection> = (props) => {
         headers: { Authorization: "Bearer " + session?.access_token },
       })
       .then((e) => {
-        console.log(e.data);
         setData(e.data);
       });
   }, [session]);

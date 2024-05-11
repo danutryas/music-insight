@@ -53,7 +53,6 @@ const PlaybackController = () => {
         value={volumeHandler()}
         onBlurCapture={(e) => {
           updatePlaybackVolume(Number(e.target.value));
-          console.log(e.target.value);
         }}
         onChange={(e) => {
           setVolume(Number(e.target.value));

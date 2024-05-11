@@ -7,7 +7,6 @@ import usePlayback from "@/context/PlaybackContext";
 
 const Playback: React.FC = () => {
   const { playback, isPlaybackLoading, isEmpty } = usePlayback();
-  console.log(playback);
   if (!isEmpty)
     return (
       <BlurryCard className="mb-5 fixed bottom-0 h-auto">

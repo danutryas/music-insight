@@ -17,7 +17,6 @@ const TrackPage = () => {
     getCurrentTrack()
       .then((e) => {
         setCurrentTrack(e);
-        // console.log(e);
       })
       .finally(() => {
         setIsLoading(false);
