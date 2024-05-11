@@ -1,5 +1,8 @@
-import Image from "next/image";
+"use client";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-  return <div className=""></div>;
+  const { data: session } = useSession();
+  console.log(session);
+  return <div className="container mx-auto w-full"></div>;
 }
